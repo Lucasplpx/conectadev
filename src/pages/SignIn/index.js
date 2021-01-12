@@ -1,8 +1,18 @@
-import { Avatar, Button, Link, TextField, Typography } from '@material-ui/core';
+import { useState } from 'react';
+import {
+  Avatar,
+  Button,
+  FormHelperText,
+  Link,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Grid, Box } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
+import { useNavigate } from 'react-router-dom';
+import authService from '../../services/authService';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +57,19 @@ function Copyright() {
 
 function SignIn() {
   const classes = useStyles();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState();
+
+  async function handleSignIn() {
+    try {
+      await authService.signIn(email, password);
+      navigate('/');
+    } catch (error) {
+      setErrorMessage(error.response.data.message);
+    }
+  }
 
   return (
     <Grid container className={classes.root}>
@@ -97,6 +120,8 @@ function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(evt) => setEmail(evt.target.value)}
             />
             <TextField
               variant="outlined"
@@ -108,6 +133,8 @@ function SignIn() {
               name="password"
               type="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(evt) => setPassword(evt.target.value)}
             />
 
             <Button
@@ -115,9 +142,12 @@ function SignIn() {
               fullWidth
               variant="contained"
               color="primary"
+              onClick={handleSignIn}
             >
               Entrar
             </Button>
+
+            {errorMessage && <FormHelperText error>{errorMessage}</FormHelperText>}
 
             <Grid container>
               <Grid item>
