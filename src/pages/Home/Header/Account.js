@@ -2,7 +2,7 @@ import { Avatar, Menu, MenuItem } from '@material-ui/core';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { signOut } from '../../actions/accountActions';
+import { signOut } from '../../../actions/accountActions';
 
 function Account() {
   const account = useSelector((state) => state.account);

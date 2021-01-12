@@ -20,7 +20,7 @@ import {
   Users as ConnectionIcon,
 } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNotifications } from '../../actions/notificationsActions';
+import { getNotifications } from '../../../actions/notificationsActions';
 
 const iconsMap = {
   reviews: StarIcon,
@@ -59,8 +59,6 @@ function Notifications() {
     setOpen(!isOpen);
   };
 
-  console.log(notifications[1]);
-
   return (
     isAuthenticated && (
       <>
@@ -92,7 +90,7 @@ function Notifications() {
             {notifications.map((notification) => {
               const Icon = iconsMap[notification.type];
               return (
-                <ListItem>
+                <ListItem key={notification.id}>
                   <ListItemAvatar>
                     <Avatar className={classes.icon}>
                       <SvgIcon>
