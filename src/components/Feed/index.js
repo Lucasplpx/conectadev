@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import PostCard from './PostCard';
+import PostCard from '../PostCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
