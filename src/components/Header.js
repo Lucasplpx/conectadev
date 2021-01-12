@@ -6,8 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { SvgIcon } from '@material-ui/core';
 import { Bell } from 'react-feather';
 import Avatar from '@material-ui/core/Avatar';
-
-import authService from '../../services/authService';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
   appBar: {
@@ -21,21 +20,19 @@ const useStyles = makeStyles({
   },
   userSection: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   button: {
-    marginRight: 10
+    marginRight: 10,
   },
   bell: {
-    marginRight: 10
-  }
+    marginRight: 10,
+  },
 });
 
 function Header() {
   const classes = useStyles();
-  const user = authService.getUser();
-
-  console.log(user);
+  const account = useSelector((state) => state.account);
 
   return (
     <AppBar position="fixed" color="inherit" className={classes.appBar}>
@@ -44,13 +41,17 @@ function Header() {
 
         <div className={classes.grow}></div>
         <div className={classes.userSection}>
-          <Button color="primary" variant="contained" className={classes.button}>
+          <Button
+            color="primary"
+            variant="contained"
+            className={classes.button}
+          >
             Novo Post
           </Button>
           <SvgIcon className={classes.bell}>
             <Bell></Bell>
           </SvgIcon>
-          <Avatar alt="Remy Sharp" src={user && user.avatar} />
+          <Avatar alt="Remy Sharp" src={account.user && account.user.avatar} />
         </div>
         {/* <div>
           <a href="/">Conecta Dev</a>

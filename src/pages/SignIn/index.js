@@ -12,7 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
-import authService from '../../services/authService';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../actions/accountActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,9 +63,11 @@ function SignIn() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState();
 
+  const dispatch = useDispatch();
+
   async function handleSignIn() {
     try {
-      await authService.signIn(email, password);
+      dispatch(signIn(email, password));
       navigate('/');
     } catch (error) {
       setErrorMessage(error.response.data.message);
@@ -147,7 +150,9 @@ function SignIn() {
               Entrar
             </Button>
 
-            {errorMessage && <FormHelperText error>{errorMessage}</FormHelperText>}
+            {errorMessage && (
+              <FormHelperText error>{errorMessage}</FormHelperText>
+            )}
 
             <Grid container>
               <Grid item>
