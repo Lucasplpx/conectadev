@@ -1,11 +1,19 @@
 import { Button } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 function WritePost() {
   const navigate = useNavigate();
+  const account = useSelector((state) => state.account);
+
+  const isAuthenticated = !!account.user;
 
   const handleClick = () => {
-    navigate('/post/new');
+    if (isAuthenticated) {
+      navigate('/post/new');
+    } else {
+      navigate('/sign-in');
+    }
   };
 
   return (
