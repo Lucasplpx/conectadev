@@ -1,6 +1,5 @@
 import { Box, AppBar, makeStyles, Toolbar, Button } from '@material-ui/core';
 
-import { useState } from 'react';
 import { PostProvider } from '../../../context/PostContext';
 
 import Editor from './Editor';
