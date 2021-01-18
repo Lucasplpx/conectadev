@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router';
 
 import Header from './Header';
 import Feed from '../Feed';
-import NewPost from '../Post/new';
+import NewPost from '../Post/New';
 
 const useStyles = makeStyles({
   root: {
