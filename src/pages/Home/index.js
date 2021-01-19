@@ -7,10 +7,11 @@ import NewPost from '../Post/New';
 import Post from '../Post';
 import Profile from '../Profile';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: theme.palette.background.dark,
   },
   main: {
     height: 'calc(100vh - 64px)',
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   toolbar: {
     minHeight: 64,
   },
-});
+}));
 
 function Home() {
   const classes = useStyles();
@@ -31,7 +32,7 @@ function Home() {
       <main className={classes.main}>
         <Routes>
           <Route path="/" element={<Feed />} />
-          <Route path="/:username" element={<Profile />} />          
+          <Route path="/:username" element={<Profile />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/post/new" element={<NewPost />} />
           <Route path="/post/:slug" element={<Post />} />
