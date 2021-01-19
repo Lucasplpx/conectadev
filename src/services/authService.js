@@ -19,6 +19,8 @@ class AuthService {
     });
   };
 
+  signUp = (fullName, email, password) => {};
+
   signInWithToken = () => {
     return new Promise((resolve, reject) => {
       axios

@@ -1,6 +1,6 @@
 import { AppBar, Button, makeStyles, Toolbar } from '@material-ui/core';
 import React from 'react';
-import { usePost } from '../../../../context/PostContext';
+// import { usePost } from '../../../../context/PostContext';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -15,15 +15,15 @@ const useStyles = makeStyles((theme) => ({
 
 function BottomBar() {
   const classes = useStyles();
-  const ctx = usePost();
+  // const ctx = usePost();
 
-  const handleSaveDraft = () => {
-    // acessar backend e salvar o rascunho
-  }
+  // const handleSaveDraft = () => {
+  //   // acessar backend e salvar o rascunho
+  // }
 
-  const handlePublish = () => {
-    // acessar o backend e publicar este post
-  }
+  // const handlePublish = () => {
+  //   // acessar o backend e publicar este post
+  // }
 
 
   return (
