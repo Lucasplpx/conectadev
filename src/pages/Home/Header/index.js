@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Account from './Account';
 import Notifications from './Notifications';
 import WritePost from './WritePost';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   appBar: {
@@ -30,8 +31,9 @@ function Header() {
   return (
     <AppBar position="fixed" color="inherit" className={classes.appBar}>
       <Toolbar>
-        <img src="/images/logo.png" alt="logo app" className={classes.img} />
-
+        <Link to="/">
+          <img src="/images/logo.png" alt="logo app" className={classes.img} />
+        </Link>
         <div className={classes.grow} />
         <div className={classes.userSection}>
           <Box ml={2}>

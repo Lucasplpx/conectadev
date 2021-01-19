@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -11,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import MessageIcon from '@material-ui/icons/Message';
+import { useNavigate } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,25 +40,30 @@ const useStyles = makeStyles((theme) => ({
   },
   favorite: {
     marginLeft: 'auto',
-  }
+  },
 }));
 
 function PostCard({ post }) {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const handlePostClick = () => {
+    navigate(`/post/${post.slug}`);
+  };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={handlePostClick}>
       <CardHeader
-        avatar={<Avatar src={post.author.avatar} />}
+        avatar={<Avatar src={post.author?.avatar} />}
         title={<Typography variant="h6">{post.title}</Typography>}
         subheader={
           <div className={classes.subheader}>
             <Typography variant="caption" className={classes.caption}>
-              {'Avaliado por '}
+              {'Criado por '}
             </Typography>
             <Typography variant="subtitle2">{post.author.name}</Typography>
             <Typography variant="caption" className={classes.caption}>
-              {post.date}
+              {moment(post.date).fromNow()}
             </Typography>
           </div>
         }
