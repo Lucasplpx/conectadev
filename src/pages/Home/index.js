@@ -5,6 +5,7 @@ import Header from './Header';
 import Feed from '../Feed';
 import NewPost from '../Post/New';
 import Post from '../Post';
+import Profile from '../Profile';
 
 const useStyles = makeStyles({
   root: {
@@ -30,6 +31,7 @@ function Home() {
       <main className={classes.main}>
         <Routes>
           <Route path="/" element={<Feed />} />
+          <Route path="/:username" element={<Profile />} />          
           <Route path="/feed" element={<Feed />} />
           <Route path="/post/new" element={<NewPost />} />
           <Route path="/post/:slug" element={<Post />} />

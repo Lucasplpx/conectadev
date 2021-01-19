@@ -32,3 +32,15 @@ mock.onPost('/api/home/login').reply((config) => {
 
   return [200, { user }];
 });
+
+mock.onGet('/api/home/user/lucaspassos').reply(200, {
+  id: 1,
+  name: 'Lucas Passos',
+  username: 'lucaspassos',
+  email: 'lucaspassos@lucaspassos.com.br',
+  accessToken: 'kasdfoiasdfas',
+  avatar: 'images/avatars/avatar_1.jpg',
+  joinedIn: '06 de março, 2021',
+  work: 'Arquiteto de Software',
+  totalPost: '388',
+});

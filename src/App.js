@@ -10,6 +10,7 @@ import theme from './theme';
 import store from './store';
 
 import './mock';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Auth>
             <Routes>
               <GuestRoute path="/sign-in" element={<SignIn />} />
+              <GuestRoute path="/sign-up" element={<SignUp />} />
               <Route path="//*" element={<Home />} />
             </Routes>
           </Auth>
